@@ -48,7 +48,7 @@ Para ejecutar el proyecto se necesitan las siguientes herramientas:
 
 **1. Abrir el proyecto**
 
-Descomprimir el archivo ZIP y abrir la carpeta `Proyecto_Datos_Abiertos_MVC` en Visual Studio Code.
+Abrir la carpeta `Proyecto_Datos_Abiertos_MVC` en Visual Studio Code.
 
 **2. Crear el entorno virtual**
 
