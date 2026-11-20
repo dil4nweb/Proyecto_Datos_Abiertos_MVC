@@ -55,12 +55,4 @@ Si PowerShell impide activar scripts, **no necesitas activar el entorno**: ejecu
 - HTTP 404/429: revisar endpoint o esperar antes de reintentar.
 - No subir `.env`, `venv/`, contraseñas ni archivos generados al repositorio.
 
-## Responsabilidades para sustentación
-- Dilan Tapia Mercado: selección de dataset, consumo API y JSON.
-- Johan Duran Suarez: SQL Server, modelo, inserción y consultas.
-- Kevin Sanmiguel Ortiz: Flask, vista HTML, búsqueda y pruebas.
 
-Esta es una distribución sugerida para explicar el trabajo; cada integrante debe comprender el flujo completo.
-
-## Entrega
-Subir a un repositorio público de GitHub todos los archivos del proyecto salvo los excluidos por `.gitignore`. Cada integrante debe pegar individualmente el enlace del repositorio en EVA antes del plazo indicado.
