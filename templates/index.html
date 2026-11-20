@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Datos Abiertos Colombia</title><link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}"></head>
+<body><main>
+<h1>Consulta de Datos Abiertos de Colombia</h1>
+<p>Dataset: Registro de Activos de Información | Fuente: datos.gov.co</p>
+<p><a href="https://www.datos.gov.co/Funci-n-P-blica/Registro-de-Activos-de-Informaci-n/sxi5-ie6w" target="_blank" rel="noopener">Ver conjunto original</a></p>
+<h2>Sincronización</h2>
+<form action="{{ url_for('sincronizar') }}" method="post"><label>Registros a consultar: <select name="limite"><option>50</option><option selected>100</option><option>200</option><option>500</option></select></label> <button type="submit">Consultar API y guardar en SQL Server</button></form>
+{% for tipo, mensaje in get_flashed_messages(with_categories=true) %}<p class="mensaje {{ tipo }}">{{ mensaje }}</p>{% endfor %}
+{% if error %}<p class="mensaje error">{{ error }}</p>{% endif %}
+<h2>Resumen de la base de datos</h2><p><strong>Registros almacenados:</strong> {{ estadisticas.total }} | <strong>Formatos diferentes:</strong> {{ estadisticas.formatos }}</p>
+<h2>Buscar registros guardados</h2>
+<form action="{{ url_for('inicio') }}" method="get"><input type="search" name="q" value="{{ filtro }}" placeholder="Título, descripción, formato o idioma"><button type="submit">Buscar</button> <a href="{{ url_for('inicio') }}">Limpiar</a></form>
+<p>Se muestran hasta 100 resultados de SQL Server.</p>
+<div class="tabla"><table><thead><tr><th>Título</th><th>Descripción</th><th>Idioma</th><th>Medio</th><th>Formato</th><th>Disponible</th><th>Publicada</th><th>ID</th></tr></thead><tbody>
+{% for r in registros %}<tr><td>{{ r.titulo }}</td><td>{{ r.descripcion }}</td><td>{{ r.idioma }}</td><td>{{ r.medio }}</td><td>{{ r.formato }}</td><td>{{ r.disponible }}</td><td>{{ r.publicada }}</td><td><small>{{ r.id_api[:12] }}</small></td></tr>{% else %}<tr><td colspan="8">No hay registros. Sincroniza la API o cambia la búsqueda.</td></tr>{% endfor %}
+</tbody></table></div>
+<footer>Integrantes: Dilan Tapia Mercado · Johan Duran Suarez · Kevin Sanmiguel Ortiz</footer>
+</main></body></html>
